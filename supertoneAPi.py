@@ -1,4 +1,4 @@
-import requests
+"""import requests
 import time
 
 # API 엔드포인트와 인증 키
@@ -45,14 +45,16 @@ else:
 
 print(f"응답 시간: {elapsed_time:.2f}초")
 
-"""import requests
+"""
+
+import requests
 import os
 from dotenv import load_dotenv
 
 load_dotenv()
 SUPERTONE_API_KEY = os.getenv("SUPERTONE_API_KEY")
 
-def generate_tts(text, output_path="output.wav", voice_id="54CyP2zU9HCeLVCpzDRFPi"):
+def generate_tts(text, output_path="output.wav", style = "Neutral", voice_id="c3c0898fd41489a8e8919c", model="sona_speech_1"):
     API_URL = f"https://supertoneapi.com/v1/text-to-speech/{voice_id}"
     headers = {
         "Content-Type": "application/json",
@@ -62,7 +64,8 @@ def generate_tts(text, output_path="output.wav", voice_id="54CyP2zU9HCeLVCpzDRFP
     payload = {
         "text": text,
         "language": "ko",
-        "model": "turbo",
+        "model": model,
+        "style":style,
         "voice_settings": {
             "pitch_shift": 0,
             "pitch_variance": 1,
@@ -82,4 +85,3 @@ def generate_tts(text, output_path="output.wav", voice_id="54CyP2zU9HCeLVCpzDRFP
         print(response.status_code)
         print(response.text)
         return None
-"""
