@@ -31,6 +31,8 @@ def generate_answer(context_chunks, query, model="gpt-4"):
         {"role": "user", "content": prompt}
     ]
     response = client.chat.completions.create(model=model, messages=messages, temperature=0.85, max_tokens=300,top_p=0.9)
+
+    print("chatGPT 답변 : \n", response.choices[0].message.content.strip())
     return response.choices[0].message.content.strip()
 
 
